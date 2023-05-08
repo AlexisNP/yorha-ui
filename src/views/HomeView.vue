@@ -1,5 +1,16 @@
+<script lang="ts" setup>
+import YrhButton from '@/components/YrhButton.vue'
+import YrhHeading from '@/components/YrhHeading.vue'
+</script>
+
 <template>
   <main>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <YrhHeading> MENU PRINCIPAL </YrhHeading>
+    <YrhButton has-square> Language </YrhButton>
+    <YrhButton has-square> Settings </YrhButton>
+    <YrhButton has-square> Camera </YrhButton>
+    <YrhButton has-square> Screen </YrhButton>
+    <YrhButton has-square> Sound </YrhButton>
+    <YrhButton has-square> Other </YrhButton>
   </main>
 </template>

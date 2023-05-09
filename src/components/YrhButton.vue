@@ -1,7 +1,14 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useElementHover, useFocus } from '@vueuse/core'
 
 const hoverSfx = new Audio('/sounds/btn-hover.mp3')
+
+const btnRef = ref<HTMLElement | null>()
+const isBtnHovered = useElementHover(btnRef)
+const { focused: isBtnFocused } = useFocus(btnRef)
+
+const shouldArrowDisplay = computed(() => isBtnFocused.value || isBtnHovered.value)
 
 function playHoverSfx() {
   hoverSfx.play()
@@ -14,6 +21,7 @@ const props = defineProps<{
   disabled?: boolean
   isActive?: boolean
   hasSquare?: boolean
+  hasArrow?: boolean
 }>()
 
 const attributes = {
@@ -28,6 +36,11 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
 
 <template>
   <component
+    :ref="
+      (el: HTMLElement) => {
+        btnRef = el
+      }
+    "
     :is="elementTag"
     v-bind="attributes"
     class="btn w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
@@ -35,6 +48,16 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
     @focusin="playHoverSfx"
     @mouseover="playHoverSfx"
   >
+    <Transition name="fade" :duration="{ enter: 100, leave: 100 }">
+      <img
+        v-if="shouldArrowDisplay"
+        src="/yorha-cursor.svg"
+        height="32"
+        width="32"
+        class="absolute top-1/2 -translate-y-1/2 -left-10 scale-90 pointer-events-none"
+        alt=""
+      />
+    </Transition>
     <span class="mr-1" v-if="hasSquare">
       <font-awesome-icon :icon="['fas', 'square']" />
     </span>

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { useSound } from '@vueuse/sound'
 import { computed } from 'vue'
 
-import buttonSfx from '@/assets/sounds/btn-hover.mp3'
+const hoverSfx = new Audio('/sounds/btn-hover.mp3')
 
-const { play, stop } = useSound(buttonSfx)
+function playHoverSfx() {
+  hoverSfx.play()
+}
 
 const props = defineProps<{
   href?: string
@@ -31,9 +32,8 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
     v-bind="attributes"
     class="btn w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
     :class="{ active: isActive }"
-    @focus="play"
-    @mouseover="play"
-    @mouseleave="stop"
+    @focusin="playHoverSfx"
+    @mouseover="playHoverSfx"
   >
     <span class="mr-1" v-if="hasSquare">
       <font-awesome-icon :icon="['fas', 'square']" />

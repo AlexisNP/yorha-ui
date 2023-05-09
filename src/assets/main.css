@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply relative min-h-screen min-w-full text-y-beige-900 bg-y-beige-400 bg-[url('/yorha-bg.svg')] bg-contain bg-no-repeat
+  @apply relative min-h-screen min-w-full text-y-beige-900 bg-y-beige-400
 }
 
 body::before {

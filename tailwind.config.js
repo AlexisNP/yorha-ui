@@ -28,6 +28,9 @@ module.exports = {
           800: '#3A382C',
           900: '#2d2c21'
         }
+      },
+      boxShadow: {
+        sharpest: '2px 2px #2d2c2150'
       }
     }
   },

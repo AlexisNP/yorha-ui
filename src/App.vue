@@ -4,7 +4,11 @@ import { RouterView } from 'vue-router'
 
 <template>
   <div id="wrapper" class="py-16 px-8">
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>
 

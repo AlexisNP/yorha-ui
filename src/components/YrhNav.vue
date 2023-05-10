@@ -51,6 +51,7 @@ function handleInactiveState() {
       >
         <YrhButton
           has-square
+          :href="item.href"
           :has-arrow="item.id === clickedKey ? 'force' : true"
           :is-active="item.id === clickedKey"
           @mouseenter="handleActiveBtn($event, item)"

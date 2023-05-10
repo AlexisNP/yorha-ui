@@ -29,8 +29,35 @@ const availableRoutes: MenuItem[] = [
   }
 ]
 
-const activeRoute = ref<string | null>('')
+const settingsOptions: MenuItem[] = [
+  {
+    id: 'dark-mode',
+    label: 'Dark Mode',
+    bannerText: 'Alter the terminal appearance'
+  },
+  {
+    id: 'language',
+    label: 'Language',
+    bannerText: 'Change terminal language'
+  },
+  {
+    id: 'audio',
+    label: 'Audio',
+    bannerText: 'Change audio settings'
+  },
+  {
+    id: 'video',
+    label: 'Video',
+    bannerText: 'Change video settings'
+  },
+  {
+    id: 'controls',
+    label: 'Controls',
+    bannerText: 'Change keyboard or gamepad controls'
+  }
+]
 
+const activeRoute = ref<string | null>('')
 function switchActiveRoute(key: string | null) {
   activeRoute.value = key
 }
@@ -43,7 +70,11 @@ function switchActiveRoute(key: string | null) {
       <div>
         <YrhNav :items="availableRoutes" @change-nav="switchActiveRoute" />
       </div>
-      <div>Secondary level (like settings)</div>
+      <Transition name="fade" mode="out-in">
+        <YrhNav v-if="activeRoute === 'current-data'" :items="settingsOptions" />
+        <YrhNav v-else-if="activeRoute === 'settings'" :items="settingsOptions" />
+        <YrhNav v-else-if="activeRoute === 'credits'" :items="settingsOptions" />
+      </Transition>
     </div>
     <div>
       <YrhBanner>
@@ -54,5 +85,4 @@ function switchActiveRoute(key: string | null) {
       </YrhBanner>
     </div>
   </main>
-  {{ activeRoute }}
 </template>

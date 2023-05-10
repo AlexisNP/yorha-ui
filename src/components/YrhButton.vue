@@ -9,10 +9,15 @@ const btnRef = ref<HTMLElement | null>()
 const isBtnHovered = useElementHover(btnRef)
 const { focused: isBtnFocused } = useFocus(btnRef)
 
-const shouldArrowDisplay = computed(() => isBtnFocused.value || isBtnHovered.value)
+const emit = defineEmits(['clicked'])
+
+const shouldArrowDisplay = computed(
+  () => isBtnFocused.value || isBtnHovered.value || props.hasArrow === 'force'
+)
 
 function handleClick() {
   clickSfx.play()
+  emit('clicked')
 }
 
 function handleMouseOver() {
@@ -31,7 +36,7 @@ const props = defineProps<{
   disabled?: boolean
   isActive?: boolean
   hasSquare?: boolean
-  hasArrow?: boolean
+  hasArrow?: boolean | 'force'
 }>()
 
 const attributes = {
@@ -63,7 +68,8 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
         src="/yorha-cursor.svg"
         height="32"
         width="32"
-        class="absolute top-1/2 -translate-y-1/2 -left-10 scale-90 pointer-events-none"
+        class="absolute top-1/2 -translate-y-1/2 -left-10 scale-90 pointer-events-none transition-all"
+        :class="{ 'invert-[.33] opacity-60': props.hasArrow === 'force' }"
         alt=""
       />
     </Transition>

@@ -1,14 +1,24 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { useElementHover, useFocus } from '@vueuse/core'
 
 const hoverSfx = new Audio('/sounds/btn-hover.mp3')
+const clickSfx = new Audio('/sounds/btn-click.mp3')
 
 const btnRef = ref<HTMLElement | null>()
 const isBtnHovered = useElementHover(btnRef)
 const { focused: isBtnFocused } = useFocus(btnRef)
 
 const shouldArrowDisplay = computed(() => isBtnFocused.value || isBtnHovered.value)
+
+function handleClick() {
+  clickSfx.play()
+}
+
+function handleMouseOver() {
+  isBtnFocused.value = true
+  hoverSfx.play()
+}
 
 function playHoverSfx() {
   hoverSfx.play()
@@ -36,17 +46,16 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
 
 <template>
   <component
-    :ref="
-      (el: HTMLElement) => {
-        btnRef = el
-      }
-    "
+    ref="btnRef"
     :is="elementTag"
     v-bind="attributes"
     class="btn w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
     :class="{ active: isActive }"
+    @mousedown="handleClick"
+    @keyup.enter="handleClick"
+    @keyup.space="handleClick"
     @focusin="playHoverSfx"
-    @mouseover="playHoverSfx"
+    @mouseover="handleMouseOver"
   >
     <Transition name="fade" :duration="{ enter: 100, leave: 100 }">
       <img

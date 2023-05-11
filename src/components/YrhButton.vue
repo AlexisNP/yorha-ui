@@ -46,7 +46,17 @@ const attributes = {
   disabled: props.disabled
 }
 
-const elementTag = computed(() => (props.href ? 'a' : 'button'))
+const isInternalLink = computed(() => props.href && props.href.charAt(0) === '/')
+
+const elementTag = computed(() => {
+  if (props.href) {
+    if (isInternalLink.value) {
+      return 'router-link'
+    }
+    return 'a'
+  }
+  return 'button'
+})
 </script>
 
 <template>
@@ -54,7 +64,8 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
     ref="btnRef"
     :is="elementTag"
     v-bind="attributes"
-    class="btn w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
+    :to="isInternalLink ? props.href : null"
+    class="btn inline-block w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
     :class="{ active: isActive }"
     @mousedown="handleClick"
     @keyup.enter="handleClick"

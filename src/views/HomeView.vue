@@ -15,7 +15,8 @@ const availableRoutes: MenuItem[] = [
   {
     id: 'current-data',
     label: 'Current Data',
-    bannerText: 'Search through current file data'
+    bannerText: 'Search through current file data',
+    href: '/data'
   },
   {
     id: 'settings',
@@ -71,8 +72,7 @@ function switchActiveRoute(key: string | null) {
         <YrhNav :items="availableRoutes" @change-nav="switchActiveRoute" />
       </div>
       <Transition name="fade" mode="out-in">
-        <YrhNav v-if="activeRoute === 'current-data'" :items="settingsOptions" />
-        <YrhNav v-else-if="activeRoute === 'settings'" :items="settingsOptions" />
+        <YrhNav v-if="activeRoute === 'settings'" :items="settingsOptions" />
         <YrhNav v-else-if="activeRoute === 'credits'" :items="settingsOptions" />
       </Transition>
     </div>

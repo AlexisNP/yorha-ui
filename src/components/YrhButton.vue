@@ -68,7 +68,7 @@ const elementTag = computed(() => (props.href ? 'a' : 'button'))
         src="/yorha-cursor.svg"
         height="32"
         width="32"
-        class="absolute top-1/2 -translate-y-1/2 -left-10 scale-90 pointer-events-none transition-all"
+        class="absolute top-1/2 -translate-y-1/2 -left-11 scale-90 pointer-events-none transition-all"
         :class="{ 'invert-[.33] opacity-60': props.hasArrow === 'force' }"
         alt=""
       />

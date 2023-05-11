@@ -70,7 +70,7 @@ function handleInactiveState() {
 <style lang="scss" scoped>
 menu {
   position: relative;
-  @apply pl-9;
+  @apply pl-11;
 
   li {
     @apply mb-3;

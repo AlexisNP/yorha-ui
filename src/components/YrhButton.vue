@@ -14,35 +14,6 @@ const { focused: isBtnFocused } = useFocus(btnRef)
 
 const emit = defineEmits(['clicked'])
 
-const shouldArrowDisplay = computed(
-  () => isBtnFocused.value || isBtnHovered.value || props.hasArrow === 'force'
-)
-
-function handleClick(e: MouseEvent) {
-  clickSfx.play()
-  emit('clicked')
-
-  if (props.href && isInternalLink) {
-    router.push(props.href)
-  }
-}
-
-function handleMouseOver() {
-  if (!isBtnFocused.value) {
-    hoverSfx.play()
-  }
-}
-
-function playHoverSfx() {
-  hoverSfx.play()
-}
-
-function handleFocusin() {
-  if (!isBtnHovered.value) {
-    hoverSfx.play()
-  }
-}
-
 const props = defineProps<{
   href?: string
   target?: string
@@ -72,6 +43,35 @@ const elementTag = computed(() => {
   }
   return 'button'
 })
+
+const shouldArrowDisplay = computed(
+  () => isBtnFocused.value || isBtnHovered.value || props.hasArrow === 'force'
+)
+
+function playHoverSfx() {
+  hoverSfx.play()
+}
+
+function handleClick(e: MouseEvent) {
+  clickSfx.play()
+  emit('clicked')
+
+  if (props.href && isInternalLink) {
+    router.push(props.href)
+  }
+}
+
+function handleMouseOver() {
+  if (!isBtnFocused.value) {
+    playHoverSfx()
+  }
+}
+
+function handleFocusin() {
+  if (!isBtnHovered.value) {
+    playHoverSfx()
+  }
+}
 </script>
 
 <template>
@@ -80,7 +80,11 @@ const elementTag = computed(() => {
     :is="elementTag"
     v-bind="attributes"
     class="btn inline-block w-full p-1 px-2 text-left"
-    :class="{ active: isActive, 'bg-y-beige-500 hover:shadow-md focus-visible:shadow-md': !noBg }"
+    :class="{
+      active: isActive,
+      'bg-y-beige-500 hover:shadow-md focus-visible:shadow-md': !noBg,
+      'text-y-beige-700': noBg
+    }"
     @mousedown="handleClick"
     @keyup.enter="handleClick"
     @keyup.space="handleClick"

@@ -1,19 +1,43 @@
 <script lang="ts" setup>
 import YrhButton from '@/components/YrhButton.vue'
 import type { GameItem } from '@/models/YrhGameItem'
+import { useItemStore } from '@/stores/datas/itemStore'
+import { storeToRefs } from 'pinia'
+
+const { currentItem } = storeToRefs(useItemStore())
 
 const props = defineProps<{
   items: GameItem[]
 }>()
+
+function handleSelectedItem(item: GameItem) {
+  currentItem.value = item
+}
 </script>
 
 <template>
   <div class="relative pl-11">
-    <menu class="py-4 bg-y-beige-300 max-h-full shadow-sharpest">
+    <menu class="py-2 bg-y-beige-300 max-h-full shadow-sharpest">
       <li v-for="item in props.items" :key="item.name" class="mb-2 last:mb-0">
-        <YrhButton no-bg has-arrow>
+        <YrhButton
+          no-bg
+          :has-arrow="item.name === currentItem?.name ? 'force' : true"
+          @clicked="handleSelectedItem(item)"
+          :is-active="item.name === currentItem?.name"
+        >
           <span class="flex justify-between">
-            <span>{{ item.name }}</span>
+            <span class="flex items-center">
+              <span v-if="item.category">
+                <img
+                  :src="`/images/item-${item.category}-icon.png`"
+                  class="pr-2"
+                  height="24"
+                  width="24"
+                  alt=""
+                />
+              </span>
+              <span>{{ item.name }}</span>
+            </span>
             <span v-if="item.numberHeld">{{ item.numberHeld }}</span>
           </span>
         </YrhButton>
@@ -24,34 +48,9 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 menu {
-  // &::before,
-  // &::after {
-  //   position: absolute;
-  //   right: 0.5rem;
-  //   left: 0.5rem;
-  //   display: block;
-  //   content: '';
-  //   height: 0.1rem;
-  //   background-color: var(--color-y-beige-900);
-  //   opacity: 0.25;
-  // }
-
-  // &::before {
-  //   top: 0;
-  // }
-  // &::after {
-  //   bottom: 0;
-  // }
-
   &::before {
-    display: block;
-    position: absolute;
+    @apply block absolute -top-2 -bottom-2 left-0 w-4;
     content: '';
-    top: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 15px;
     border-left-width: 8px;
     border-right-width: 2px;
     border-color: var(--color-y-beige-900);

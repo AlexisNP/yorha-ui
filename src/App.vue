@@ -50,12 +50,12 @@ import { RouterView } from 'vue-router'
 
   &::before {
     left: 0;
-    background-image: url('/yorha-bg-left.svg');
+    background-image: url('/backgrounds/yorha-bg-left.svg');
     background-position: left;
   }
   &::after {
     right: 0;
-    background-image: url('/yorha-bg-right.svg');
+    background-image: url('/backgrounds/yorha-bg-right.svg');
     background-position: right;
   }
 }

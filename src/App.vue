@@ -17,6 +17,8 @@ import { RouterView } from 'vue-router'
   position: relative;
   min-height: 100dvh;
   min-height: 100vh;
+  max-height: 100dvh;
+  max-height: 100vh;
   overflow-x: hidden;
 
   display: grid;

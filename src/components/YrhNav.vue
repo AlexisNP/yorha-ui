@@ -25,9 +25,9 @@ function handleClickedKey(e: Event, item: MenuItem) {
 }
 
 function handleActiveBtn(e: Event, item: MenuItem) {
-  if (document.activeElement && e.type === 'mouseenter') {
-    ;(document.activeElement as HTMLElement).blur()
-  }
+  // if (document.activeElement && e.type === 'mouseenter') {
+  //   ;(document.activeElement as HTMLElement).blur()
+  // }
   activeKey.value = item.id
   bannerText.value = item.bannerText
 }

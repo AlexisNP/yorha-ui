@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useElementHover, useFocus } from '@vueuse/core'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const hoverSfx = new Audio('/sounds/btn-hover.mp3')
 const clickSfx = new Audio('/sounds/btn-click.mp3')
@@ -15,18 +18,29 @@ const shouldArrowDisplay = computed(
   () => isBtnFocused.value || isBtnHovered.value || props.hasArrow === 'force'
 )
 
-function handleClick() {
+function handleClick(e: MouseEvent) {
   clickSfx.play()
   emit('clicked')
+
+  if (props.href && isInternalLink) {
+    router.push(props.href)
+  }
 }
 
 function handleMouseOver() {
-  isBtnFocused.value = true
-  hoverSfx.play()
+  if (!isBtnFocused.value) {
+    hoverSfx.play()
+  }
 }
 
 function playHoverSfx() {
   hoverSfx.play()
+}
+
+function handleFocusin() {
+  if (!isBtnHovered.value) {
+    hoverSfx.play()
+  }
 }
 
 const props = defineProps<{
@@ -37,6 +51,7 @@ const props = defineProps<{
   isActive?: boolean
   hasSquare?: boolean
   hasArrow?: boolean | 'force'
+  noBg?: boolean
 }>()
 
 const attributes = {
@@ -51,7 +66,7 @@ const isInternalLink = computed(() => props.href && props.href.charAt(0) === '/'
 const elementTag = computed(() => {
   if (props.href) {
     if (isInternalLink.value) {
-      return 'router-link'
+      return 'button'
     }
     return 'a'
   }
@@ -64,13 +79,12 @@ const elementTag = computed(() => {
     ref="btnRef"
     :is="elementTag"
     v-bind="attributes"
-    :to="isInternalLink ? props.href : null"
-    class="btn inline-block w-full p-1 px-2 text-left bg-y-beige-500 hover:shadow-md focus-visible:shadow-md"
-    :class="{ active: isActive }"
+    class="btn inline-block w-full p-1 px-2 text-left"
+    :class="{ active: isActive, 'bg-y-beige-500 hover:shadow-md focus-visible:shadow-md': !noBg }"
     @mousedown="handleClick"
     @keyup.enter="handleClick"
     @keyup.space="handleClick"
-    @focusin="playHoverSfx"
+    @focusin="handleFocusin"
     @mouseover="handleMouseOver"
   >
     <Transition name="fade" :duration="{ enter: 100, leave: 100 }">

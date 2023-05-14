@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 import YrhBanner from '@/components/YrhBanner.vue'
 import YrhHeading from '@/components/YrhHeading.vue'
@@ -16,7 +16,7 @@ const availableRoutes: MenuItem[] = [
     id: 'current-data',
     label: 'Current Data',
     bannerText: 'Search through current file data',
-    href: '/data'
+    href: '/data/items'
   },
   {
     id: 'settings',

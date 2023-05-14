@@ -1,5 +1,5 @@
 <template>
-  <div class="banner shadow-sharpest py-3 px-9">
+  <div class="banner shadow-sharpest bg-y-beige-300 py-3 px-9">
     <slot />
   </div>
 </template>
@@ -7,7 +7,6 @@
 <style lang="scss" scoped>
 .banner {
   position: relative;
-  background-color: rgba(#fff, 0.25);
 
   &::before {
     display: block;

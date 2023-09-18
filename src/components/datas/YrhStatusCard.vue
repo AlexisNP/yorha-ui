@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useStatusStore } from '@/stores/datas/statusStore'
-import YrhCard from '../YrhCard.vue'
 import { storeToRefs } from 'pinia'
+import YrhCard from '../YrhCard.vue'
 
 const { androidData } = storeToRefs(useStatusStore())
 </script>
@@ -50,7 +50,7 @@ const { androidData } = storeToRefs(useStatusStore())
         <span> {{ androidData.defenseRaw || 0 }} </span>
       </div>
 
-      <div class="mt-2 opacity-25 flex justify-around">
+      <div class="mt-2 text-y-beige-500 flex justify-around">
         <font-awesome-icon :icon="['far', 'square']" />
         <font-awesome-icon :icon="['far', 'square']" />
         <font-awesome-icon :icon="['far', 'square']" />
@@ -68,9 +68,10 @@ const { androidData } = storeToRefs(useStatusStore())
       </div>
       <hr class="mt-2 mb-0 border-t-2 border-y-beige-500" />
     </template>
+
     <template #footer>
       <div class="h-full grid place-items-center">
-        <span class="text-sm uppercase">No error</span>
+        <span class="text-xs uppercase">No error</span>
       </div>
     </template>
   </YrhCard>

@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
-import type { Ref } from 'vue'
+import type { MenuItem } from '@/models/YrhNavItem'
+import { useBannerStore } from '@/stores/banner'
 import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 import YrhButton from './YrhButton.vue'
 
-import { useBannerStore } from '@/stores/banner'
-import type { MenuItem } from '@/models/YrhNavItem'
 const { bannerText } = storeToRefs(useBannerStore())
 
 const props = defineProps<{

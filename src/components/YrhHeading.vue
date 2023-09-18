@@ -1,7 +1,18 @@
+<script lang="ts" setup>
+import { useSlots } from 'vue'
+
+const slots = useSlots()
+</script>
+
 <template>
-  <h1 class="text-4xl tracking-wider">
-    <slot />
-  </h1>
+  <div class="flex items-end">
+    <h1 class="text-4xl tracking-wider">
+      <slot />
+    </h1>
+    <span v-if="slots.subtitle" class="ml-2 text-lg font-medium">
+      <slot name="subtitle" />
+    </span>
+  </div>
 </template>
 
 <style scoped>

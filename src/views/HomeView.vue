@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 import YrhBanner from '@/components/YrhBanner.vue'
 import YrhHeading from '@/components/YrhHeading.vue'
 import YrhNav from '@/components/YrhNav.vue'
-
+import type { MenuItem } from '@/models/YrhNavItem'
 import { useBannerStore } from '@/stores/banner'
 import { storeToRefs } from 'pinia'
-import type { MenuItem } from '@/models/YrhNavItem'
+import { ref, onMounted } from 'vue'
 
 const { bannerText } = storeToRefs(useBannerStore())
 
@@ -62,6 +60,10 @@ const activeRoute = ref<string | null>('')
 function switchActiveRoute(key: string | null) {
   activeRoute.value = key
 }
+
+onMounted(() => {
+  bannerText.value = null
+})
 </script>
 
 <template>

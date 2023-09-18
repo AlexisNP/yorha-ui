@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import YrhButton from '@/components/YrhButton.vue'
 import type { GameItem } from '@/models/YrhGameItem'
+
+import YrhButton from '@/components/YrhButton.vue'
+
 import { useItemStore } from '@/stores/datas/itemStore'
 import { storeToRefs } from 'pinia'
 
@@ -16,8 +18,10 @@ function handleSelectedItem(item: GameItem) {
 </script>
 
 <template>
-  <div class="relative pl-11">
-    <menu class="py-2 bg-y-beige-300 max-h-full shadow-sharpest">
+  <div class="h-full relative pl-11">
+    <menu
+      class="h-[calc(100%-16px)] overflow-auto py-2 bg-y-beige-300 max-h-full shadow-sharpest y-scrollbar"
+    >
       <li v-for="item in props.items" :key="item.name" class="mb-2 last:mb-0">
         <YrhButton
           no-bg

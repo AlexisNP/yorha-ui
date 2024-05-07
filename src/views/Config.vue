@@ -2,6 +2,7 @@
 import YrhBanner from '@/components/YrhBanner.vue'
 import YrhHeading from '@/components/YrhHeading.vue'
 import YrhNav from '@/components/YrhNav.vue'
+import YrhAudioMenu from '@/components/config/YrhAudioMenu.vue'
 import type { MenuItem } from '@/models/YrhNavItem'
 import { useBannerStore } from '@/stores/banner'
 import { storeToRefs } from 'pinia'
@@ -11,30 +12,6 @@ const { bannerText } = storeToRefs(useBannerStore())
 
 const availableRoutes: MenuItem[] = [
   {
-    id: 'current-data',
-    label: 'Current Data',
-    bannerText: 'Search through current file data',
-    href: '/data/items'
-  },
-  {
-    id: 'settings',
-    label: 'Settings',
-    bannerText: 'Modify personnal data'
-  },
-  {
-    id: 'credits',
-    label: 'Credits',
-    bannerText: "Search through personnel's archive"
-  }
-]
-
-const settingsOptions: MenuItem[] = [
-  {
-    id: 'dark-mode',
-    label: 'Dark Mode',
-    bannerText: 'Alter the terminal appearance'
-  },
-  {
     id: 'language',
     label: 'Language',
     bannerText: 'Change terminal language'
@@ -43,16 +20,6 @@ const settingsOptions: MenuItem[] = [
     id: 'audio',
     label: 'Audio',
     bannerText: 'Change audio settings'
-  },
-  {
-    id: 'video',
-    label: 'Video',
-    bannerText: 'Change video settings'
-  },
-  {
-    id: 'controls',
-    label: 'Controls',
-    bannerText: 'Change keyboard or gamepad controls'
   }
 ]
 
@@ -68,14 +35,14 @@ onMounted(() => {
 
 <template>
   <main class="container grid grid-rows-[auto_1fr_5vh]">
-    <YrhHeading> YORHA SYSTEM </YrhHeading>
+    <YrhHeading> SYSTEM CONFIGURATION </YrhHeading>
     <div class="grid grid-cols-4 items-center">
       <div>
         <YrhNav :items="availableRoutes" @change-nav="switchActiveRoute" />
       </div>
       <Transition name="fade" mode="out-in">
-        <YrhNav v-if="activeRoute === 'settings'" :items="settingsOptions" />
-        <YrhNav v-else-if="activeRoute === 'credits'" :items="settingsOptions" />
+        <YrhAudioMenu v-if="activeRoute === 'language'">test 1</YrhAudioMenu>
+        <div v-else-if="activeRoute === 'audio'">test 2</div>
       </Transition>
     </div>
     <div>

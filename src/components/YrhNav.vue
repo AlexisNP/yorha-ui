@@ -24,9 +24,10 @@ function handleClickedKey(e: Event, item: MenuItem) {
 }
 
 function handleActiveBtn(e: Event, item: MenuItem) {
-  // if (document.activeElement && e.type === 'mouseenter') {
-  //   ;(document.activeElement as HTMLElement).blur()
-  // }
+  if (document.activeElement && e.type === 'mouseenter') {
+    ;(document.activeElement as HTMLElement).blur()
+  }
+
   activeKey.value = item.id
   bannerText.value = item.bannerText
 }
@@ -71,8 +72,8 @@ menu {
   position: relative;
   @apply pl-11;
 
-  li {
-    @apply mb-3;
+  li:not(:first-child) {
+    @apply mt-3;
   }
 
   &::before {

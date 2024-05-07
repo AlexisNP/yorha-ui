@@ -2,11 +2,15 @@
 import { useElementHover, useFocus } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAppConfig } from '@/stores/configStore'
 
 const router = useRouter()
+const { globalSound } = useAppConfig()
 
 const hoverSfx = new Audio('/sounds/btn-hover.mp3')
 const clickSfx = new Audio('/sounds/btn-click.mp3')
+hoverSfx.volume = globalSound
+clickSfx.volume = globalSound
 
 const btnRef = ref<HTMLElement | null>()
 const isBtnHovered = useElementHover(btnRef)

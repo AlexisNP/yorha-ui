@@ -15,7 +15,6 @@ module.exports = {
     '@vue/eslint-config-prettier/skip-formatting'
   ],
   rules: {
-    indent: ['error', 2],
     'prettier/prettier': [
       'error',
       {

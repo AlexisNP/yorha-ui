@@ -1,0 +1,8 @@
+body {
+  @apply relative min-h-screen min-w-full text-y-beige-700 bg-y-beige-400 tracking-[-0.03em];
+  word-spacing: 0.5em;
+
+  &::before {
+    @apply absolute content-[''] h-full w-full bg-[url('/backgrounds/tile-bg.svg')] bg-[length:4px_4px] z-50 opacity-5 pointer-events-none select-none
+  }
+}

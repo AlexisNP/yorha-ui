@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import YrhCard from '@/components/atoms/YrhCard.vue'
+import { PhSquare } from '@phosphor-icons/vue'
 
 import { useStatusStore } from '@/stores/datas/statusStore'
 import { storeToRefs } from 'pinia'
@@ -52,20 +53,7 @@ const { androidData } = storeToRefs(useStatusStore())
       </div>
 
       <div class="mt-2 text-y-beige-500 flex justify-around">
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
-        <font-awesome-icon :icon="['far', 'square']" />
+        <PhSquare v-for="i in 14" :key="i" v-once />
       </div>
       <hr class="mt-2 mb-0 border-t-2 border-y-beige-500" />
     </template>

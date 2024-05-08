@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { PhSquare } from '@phosphor-icons/vue'
+
 import { useElementHover, useFocus } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAppConfig } from '@/stores/configStore'
-
 const router = useRouter()
 const { globalSound } = useAppConfig()
 
@@ -77,7 +78,7 @@ function handleFocusin() {
     ref="btnRef"
     :is="elementTag"
     v-bind="attributes"
-    class="btn inline-block w-full p-1 px-2 text-left"
+    class="btn flex w-full items-center p-1 px-2 text-left"
     :class="{
       active: isActive,
       'bg-y-beige-500 hover:shadow-md focus-visible:shadow-md': !noBg,
@@ -101,7 +102,7 @@ function handleFocusin() {
     </Transition>
 
     <span class="mr-1" v-if="hasSquare">
-      <font-awesome-icon :icon="['fas', 'square']" />
+      <PhSquare />
     </span>
     <slot />
   </component>

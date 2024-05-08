@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import YrhButton from '../YrhButton.vue'
+import YrhButton from '@/components/atoms/YrhButton.vue'
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import YrhCard from '@/components/YrhCard.vue'
-import YrhHeading from '@/components/YrhHeading.vue'
+import YrhCard from '@/components/atoms/YrhCard.vue'
+import YrhHeading from '@/components/atoms/YrhHeading.vue'
 import YrhStatusCard from '@/components/datas/YrhStatusCard.vue'
 import ItemSelection from '@/components/datas/items/ItemSelection.vue'
 import { useBannerStore } from '@/stores/banner'
@@ -34,10 +34,12 @@ onMounted(() => {
     ITEMS
     <template #subtitle> All items </template>
   </YrhHeading>
+
   <section class="grid grid-cols-3 gap-x-10 my-14 overflow-auto">
     <div class="items-container max-h-full overflow-hidden">
       <ItemSelection :items="availableItems" />
     </div>
+
     <div class="max-h-full">
       <Transition name="fade" mode="out-in">
         <YrhCard v-if="currentItem" breathe-bottom>

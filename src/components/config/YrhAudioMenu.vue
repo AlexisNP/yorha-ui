@@ -3,7 +3,7 @@ import YrhAudioSlider from './YrhAudioSlider.vue'
 </script>
 
 <template>
-  <menu>
+  <menu class="pl-11">
     <li>
       <YrhAudioSlider>Volume</YrhAudioSlider>
     </li>
@@ -13,7 +13,6 @@ import YrhAudioSlider from './YrhAudioSlider.vue'
 <style lang="scss" scoped>
 menu {
   position: relative;
-  @apply pl-11;
 
   li:not(:first-child) {
     @apply mt-3;

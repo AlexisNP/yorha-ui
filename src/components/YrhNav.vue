@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import YrhButton from '@/components/atoms/YrhButton.vue'
+
 import type { MenuItem } from '@/models/YrhNavItem'
 import { useBannerStore } from '@/stores/banner'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
-import YrhButton from './YrhButton.vue'
 
 const { bannerText } = storeToRefs(useBannerStore())
 
@@ -42,7 +43,7 @@ function handleInactiveState() {
 
 <template>
   <div class="relative">
-    <menu v-if="props.items">
+    <menu v-if="props.items" class="pl-11">
       <li
         v-for="item in props.items"
         :key="item.id"
@@ -70,7 +71,6 @@ function handleInactiveState() {
 <style lang="scss" scoped>
 menu {
   position: relative;
-  @apply pl-11;
 
   li:not(:first-child) {
     @apply mt-3;

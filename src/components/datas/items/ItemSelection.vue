@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import YrhButton from '@/components/YrhButton.vue'
+import YrhButton from '@/components/atoms/YrhButton.vue'
+
 import type { GameItem } from '@/models/YrhGameItem'
 import { useItemStore } from '@/stores/datas/itemStore'
 import { storeToRefs } from 'pinia'

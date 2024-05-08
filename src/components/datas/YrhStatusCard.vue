@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import YrhCard from '@/components/atoms/YrhCard.vue'
+
 import { useStatusStore } from '@/stores/datas/statusStore'
 import { storeToRefs } from 'pinia'
-import YrhCard from '../YrhCard.vue'
 
 const { androidData } = storeToRefs(useStatusStore())
 </script>

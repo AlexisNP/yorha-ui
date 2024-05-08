@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import YrhBanner from '@/components/YrhBanner.vue'
-import YrhHeading from '@/components/YrhHeading.vue'
+import YrhBanner from '@/components/atoms/YrhBanner.vue'
+import YrhHeading from '@/components/atoms/YrhHeading.vue'
 import YrhNav from '@/components/YrhNav.vue'
 import type { MenuItem } from '@/models/YrhNavItem'
 import { useBannerStore } from '@/stores/banner'

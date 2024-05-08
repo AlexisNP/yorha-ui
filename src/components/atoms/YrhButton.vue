@@ -65,12 +65,6 @@ function handleClick(e: MouseEvent) {
   }
 }
 
-function handleMouseOver() {
-  if (!isBtnFocused.value) {
-    playHoverSfx()
-  }
-}
-
 function handleFocusin() {
   if (!isBtnHovered.value) {
     playHoverSfx()
@@ -93,7 +87,6 @@ function handleFocusin() {
     @keyup.enter="handleClick"
     @keyup.space="handleClick"
     @focusin="handleFocusin"
-    @mouseover="handleMouseOver"
   >
     <Transition name="fade" :duration="{ enter: 100, leave: 100 }">
       <img
@@ -106,6 +99,7 @@ function handleFocusin() {
         alt=""
       />
     </Transition>
+
     <span class="mr-1" v-if="hasSquare">
       <font-awesome-icon :icon="['fas', 'square']" />
     </span>

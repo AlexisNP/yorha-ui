@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import YrhBanner from '@/components/YrhBanner.vue'
+import YrhBanner from '@/components/atoms/YrhBanner.vue'
 import { useBannerStore } from '@/stores/banner'
 import { storeToRefs } from 'pinia'
 

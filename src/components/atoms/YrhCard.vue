@@ -18,7 +18,7 @@ const props = defineProps<{
       </span>
     </header>
 
-    <figure v-if="slots.image" class="mx-4">
+    <figure v-if="slots.image" class="mx-4 after:content-[''] after:block after:w-full after:h-[0.1rem] after:my-3 after:bg-y-beige-500">
       <div class="h-full bg-y-beige-500 grid place-items-center">
         <slot name="image" />
       </div>
@@ -38,7 +38,6 @@ const props = defineProps<{
 figure {
   &::after {
     content: '';
-    @apply block w-full h-[0.1rem] my-3 bg-y-beige-500;
   }
 }
 </style>

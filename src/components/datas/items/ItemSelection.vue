@@ -19,7 +19,7 @@ function handleSelectedItem(item: GameItem) {
 <template>
   <div class="h-full relative pl-11">
     <menu
-      class="h-[calc(100%-16px)] overflow-auto py-2 bg-y-beige-300 max-h-full shadow-sharpest y-scrollbar"
+      class="h-[calc(100%-16px)] overflow-auto py-2 bg-y-beige-300 max-h-full shadow-sharpest y-scrollbar after:-top-2 after:-bottom-2 after:w-4"
     >
       <li v-for="item in props.items" :key="item.name" class="mb-2 last:mb-0">
         <YrhButton
@@ -52,7 +52,9 @@ function handleSelectedItem(item: GameItem) {
 <style lang="scss" scoped>
 menu {
   &::before {
-    @apply block absolute -top-2 -bottom-2 left-0 w-4;
+    display: block;
+    position: absolute;
+    left: 0;
     content: '';
     border-left-width: 8px;
     border-right-width: 2px;

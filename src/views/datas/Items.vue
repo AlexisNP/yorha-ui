@@ -36,7 +36,7 @@ onMounted(() => {
   </YrhHeading>
 
   <section class="grid grid-cols-3 gap-x-10 my-14 overflow-auto">
-    <div class="items-container max-h-full overflow-hidden">
+    <div class="items-container max-h-full overflow-hidden after:ml-11 before:ml-11 after:h-2 before:h-2 after:left-14 before:left-14 after:-right-14 before:-right-14 after:bg-y-beige-300 before:bg-y-beige-300 before:border-b-2 after:border-t-2">
       <ItemSelection :items="availableItems" />
     </div>
 
@@ -67,21 +67,25 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .items-container {
-  @apply relative overflow-x-hidden;
+  position: relative;
+  overflow-x: hidden;
 
   &::before,
   &::after {
+    display: block;
+    position: sticky;
+    width: 100%;
     content: '';
     height: 0.1rem;
-    @apply block sticky ml-11 w-full h-2 left-14 -right-14 z-10 bg-y-beige-300;
     border-color: rgba(45, 44, 33, 0.33);
+    z-index: 10;
   }
 
   &::before {
-    @apply top-0 border-b-2;
+    top: 0;
   }
   &::after {
-    @apply bottom-0 border-t-2;
+    bottom: 0;
   }
 }
 </style>

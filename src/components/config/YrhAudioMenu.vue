@@ -4,7 +4,7 @@ import YrhAudioSlider from './YrhAudioSlider.vue'
 
 <template>
   <menu class="pl-11">
-    <li>
+    <li class="*:not-first:mt-3">
       <YrhAudioSlider>Volume</YrhAudioSlider>
     </li>
   </menu>
@@ -13,10 +13,6 @@ import YrhAudioSlider from './YrhAudioSlider.vue'
 <style lang="scss" scoped>
 menu {
   position: relative;
-
-  li:not(:first-child) {
-    @apply mt-3;
-  }
 
   &::before {
     display: block;

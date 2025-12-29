@@ -47,7 +47,7 @@ function handleInactiveState() {
       <li
         v-for="item in props.items"
         :key="item.id"
-        class="transition-all"
+        class="transition-all *:not-first:mt-3"
         :class="item.id === clickedKey ? 'w-full' : 'w-11/12'"
       >
         <YrhButton
@@ -71,10 +71,6 @@ function handleInactiveState() {
 <style lang="scss" scoped>
 menu {
   position: relative;
-
-  li:not(:first-child) {
-    @apply mt-3;
-  }
 
   &::before {
     display: block;

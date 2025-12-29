@@ -19,7 +19,7 @@ const props = defineProps<{
     </header>
 
     <figure v-if="slots.image" class="mx-4 after:content-[''] after:block after:w-full after:h-[0.1rem] after:my-3 after:bg-y-beige-500">
-      <div class="h-full bg-y-beige-500 grid place-items-center">
+      <div class="h-full bg-y-beige-500 relative *:absolute *:top-1/2 *:left-1/2 *:-translate-1/2">
         <slot name="image" />
       </div>
     </figure>

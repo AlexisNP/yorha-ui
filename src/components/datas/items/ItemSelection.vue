@@ -17,7 +17,7 @@ function handleSelectedItem(item: GameItem) {
 </script>
 
 <template>
-  <div class="h-full relative pl-11">
+  <div class="h-full relative pl-6">
     <menu
       class="h-[calc(100%-16px)] overflow-auto py-2 bg-y-beige-300 max-h-full shadow-sharpest y-scrollbar after:-top-2 after:-bottom-2 after:w-4"
     >

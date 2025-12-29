@@ -34,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="container grid grid-rows-[auto_1fr_5vh]">
+  <main class="grid grid-rows-[auto_1fr_5vh]">
     <YrhHeading> SYSTEM CONFIGURATION </YrhHeading>
     <div class="grid grid-cols-4 items-center">
       <div>

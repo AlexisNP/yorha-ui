@@ -7,7 +7,7 @@ const { bannerText } = storeToRefs(useBannerStore())
 </script>
 
 <template>
-  <main class="container max-h-screen grid grid-rows-[auto_1fr_auto] overflow-auto">
+  <main class="max-h-screen grid grid-rows-[auto_1fr_auto] overflow-auto">
     <RouterView v-slot="{ Component }">
       <Transition name="fade" mode="out-in">
         <component :is="Component" />

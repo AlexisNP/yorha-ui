@@ -35,8 +35,8 @@ onMounted(() => {
     <template #subtitle> All items </template>
   </YrhHeading>
 
-  <section class="grid grid-cols-3 gap-x-10 my-14 overflow-auto">
-    <div class="items-container max-h-full overflow-hidden after:ml-11 before:ml-11 after:h-2 before:h-2 after:left-14 before:left-14 after:-right-14 before:-right-14 after:bg-y-beige-300 before:bg-y-beige-300 before:border-b-2 after:border-t-2">
+  <div class="grid grid-cols-3 gap-x-4 my-8 overflow-auto">
+    <div class="items-container max-h-full overflow-hidden after:ml-6 before:ml-6 after:h-2 before:h-2 after:left-14 before:left-14 after:-right-14 before:-right-14 after:bg-y-beige-300 before:bg-y-beige-300 before:border-b-2 after:border-t-2">
       <ItemSelection :items="availableItems" />
     </div>
 
@@ -62,7 +62,7 @@ onMounted(() => {
         <YrhStatusCard />
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -76,7 +76,7 @@ onMounted(() => {
     position: sticky;
     width: 100%;
     content: '';
-    height: 0.1rem;
+    height: .1rem;
     border-color: rgba(45, 44, 33, 0.33);
     z-index: 10;
   }

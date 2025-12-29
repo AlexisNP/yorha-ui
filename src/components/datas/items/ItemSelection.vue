@@ -28,7 +28,7 @@ function handleSelectedItem(item: GameItem) {
           @clicked="handleSelectedItem(item)"
           :is-active="item.name === currentItem?.name"
         >
-          <span class="flex justify-between">
+          <span class="flex justify-between w-full">
             <span class="flex items-center">
               <span v-if="item.category">
                 <img
@@ -41,7 +41,7 @@ function handleSelectedItem(item: GameItem) {
               </span>
               <span>{{ item.name }}</span>
             </span>
-            <span v-if="item.numberHeld">{{ item.numberHeld }}</span>
+            <span v-if="item.numberHeld" class="px-1 font-medium">{{ item.numberHeld }}</span>
           </span>
         </YrhButton>
       </li>
